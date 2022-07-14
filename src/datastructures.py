@@ -40,22 +40,25 @@ class FamilyStructure:
     def add_member(self, member: dict):
         # fill this method and update the return
         member["last_name"] = self.last_name
-        if id not in member.keys():
+        if "id" not in member.keys():
             member["id"] = self._generateId()
         
         self._members.append(member)
 
     def delete_member(self, id):
         # fill this method and update the return
-        list(
+        members = list(
             filter(
-                lambda x: x["id"] == id, self._members))
+                lambda x: x["id"] != id, self._members))
+
+        self._members = members
 
     def get_member(self, id):
         # fill this method and update the return
         member = list(
             filter(
-                lambda x: x["id"] != id, self._members))
+                lambda x: x["id"] == id, self._members))
+        print(member)
         return member.pop()
 
     # this method is done, it returns a list with all the family members

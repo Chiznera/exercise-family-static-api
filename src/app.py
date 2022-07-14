@@ -47,6 +47,14 @@ def get_member(id):
 
     return jsonify(member), 200
 
+@app.route('/member/<int:id>', methods=['DELETE'])
+def delete_member(id):
+
+    # this is how you can use the Family datastructure by calling its methods
+    member = jackson_family.delete_member(id)
+
+    return jsonify(done = True), 200
+
 
 @app.route('/member', methods=['POST'])
 def add_member():
